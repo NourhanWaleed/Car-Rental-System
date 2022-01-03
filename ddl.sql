@@ -1,4 +1,22 @@
 CREATE DATABASE Car_Rental_System;
+CREATE TABLE Office(
+office_id INT AUTO_INCREMENT,
+Country VARCHAR(255) NOT NULL,
+CITY VARCHAR(255) NOT NULL,
+street VARCHAR(255) NOT NULL,
+PRIMARY KEY(office_id)    
+);
+CREATE TABLE Customer(
+customer_id INT AUTO_INCREMENT,
+first_name VARCHAR(255) NOT NULL,
+last_name VARCHAR(255) NOT NULL,
+gender char not null,
+date_of_birth DATE NOT NULL,
+email  VARCHAR(255) UNIQUE NOT NULL,
+password VARCHAR(255) NOT NULL,
+balance FLOAT NOT NULL,  
+PRIMARY KEY(customer_id)    
+);
 CREATE TABLE Car(
 car_id INT AUTO_INCREMENT,
 plate_number VARCHAR(255) UNIQUE NOT NULL,
@@ -8,34 +26,32 @@ brand VARCHAR(255) NOT NULL,
 status VARCHAR(255) NOT NULL,
 color VARCHAR(255) NOT NULL,
 price_per_day FLOAT NOT NULL,    
-PRIMARY KEY (car_id)
+reserved CHAR NOT NULL, 
+office_id INT NOT NULL,    
+is_reserved CHAR NOT NULL,    
+PRIMARY KEY (car_id),
+FOREIGN KEY (office_id) REFERENCES Office(office_id)    
 );
-CREATE TABLE `User`(
-user_id INT AUTO_INCREMENT,
+CREATE TABLE Reservation(
+customer_id INT,
+car_id  INT,
+reservation_number INT UNIQUE NOT NULL,
+reserve_date DATE NOT NULL,
+return_date  DATE NOT NULL,
+is_payment_done CHAR NOT NULL,    
+full_payment FLOAT NOT NULL,    
+PRIMARY KEY (customer_id,car_id),
+FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
+FOREIGN KEY (car_id) REFERENCES Car(car_id)    
+);
+
+CREATE TABLE admin(
+admin_id INT AUTO_INCREMENT,
 first_name VARCHAR(255) NOT NULL,
 last_name VARCHAR(255) NOT NULL,
 gender char not null,
 date_of_birth DATE NOT NULL,
 email  VARCHAR(255) UNIQUE NOT NULL,
 password VARCHAR(255) NOT NULL,
-balance FLOAT NOT NULL,
-is_admin char NOT NULL,    
-PRIMARY KEY(user_id)    
+PRIMARY KEY (admin_id)   
 );
-CREATE TABLE Reservation(
-user_id INT,
-car_id  INT,
-status VARCHAR(255)NOT NULL,
-reserve_date DATE NOT NULL,
-return_date  DATE NOT NULL,
-payment VARCHAR(255) NOT NULL,    
-PRIMARY KEY (user_id,car_id),
-FOREIGN KEY (user_id) REFERENCES User(user_id),
-FOREIGN KEY (car_id) REFERENCES Car(car_id)    
-);
-/*CREATE TABLE ISADMIN(
-user_id INT AUTO_INCREMENT,
-is_admin CHAR,
-PRIMARY KEY user_id,
-FOREIGN KEY user_id REFERENCES User(user_id)
-)*/
