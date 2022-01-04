@@ -32,17 +32,25 @@ is_reserved CHAR NOT NULL,
 PRIMARY KEY (car_id),
 FOREIGN KEY (office_id) REFERENCES Office(office_id)    
 );
+CREATE TABLE Payment(
+payment_id INT NOT NULL,
+payment_type VARCHAR(255) NOT NULL,
+amount_paid float NOT NULL,
+amount_remaining float NOT NULL,
+total_amount float not null,
+PRIMARY KEY(payment_id)
+);
 CREATE TABLE Reservation(
 customer_id INT,
 car_id  INT,
 reservation_number INT UNIQUE NOT NULL,
 reserve_date DATE NOT NULL,
 return_date  DATE NOT NULL,
-is_payment_done CHAR NOT NULL,    
-full_payment FLOAT NOT NULL,    
+payment_id int not null,
 PRIMARY KEY (customer_id,car_id),
 FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
-FOREIGN KEY (car_id) REFERENCES Car(car_id)    
+FOREIGN KEY (car_id) REFERENCES Car(car_id),    
+FOREIGN KEY (payment_id) REFERENCES Payment(payment_id)
 );
 
 CREATE TABLE admin(
