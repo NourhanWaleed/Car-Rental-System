@@ -19,17 +19,17 @@ SELECT * FROM CAR WHERE /*condition*/
 SELECT * FROM CUSTOMER CS JOIN RESERVATION R ON CS.user_id=R.user_id JOIN CAR C ON R.car_id=C.car_id WHERE /*condition*/   /*How to hide customer password*/
 
 6.All reservations within a specified period including all car and customer information
-SELECT * FROM CUSTOMER C JOIN RESERVATION R ON U.user_id=R.user_id JOIN CAR C ON R.car_id=C.car_id WHERE R.reserve_date < /*first given date*/ AND R.rent_date > /*second given date*/              /*How to hide customer password*/
+SELECT * FROM CUSTOMER C JOIN RESERVATION R ON U.user_id=R.user_id JOIN CAR C ON R.car_id=C.car_id JOIN Payment P on R.payment_id=P.payment_id WHERE R.reserve_date < /*first given date*/ AND R.rent_date > /*second given date*/              /*How to hide customer password*/
 
 7.All reservations of any car within a specified period including all car information
 SELECT * FROM RESERVATION R JOIN CAR C ON R.car_id=C.car_id WHERE R.reserve_date < /*first given date*/ AND R.rent_date > /*second given date*/
 
-8.the status of all cars on a specific day  //not sure
+8.the status of all cars on a specific day  //not sure ok now im so kunfused
 
-(SELECT R.car_id, R.status RESERVATION R) UNION (SELECT C.car_id,"NOT RESERVED" as status FROM CAR C WHERE NOT EXISTS (SELECT C.car_id FROM CAR C JOIN RESERVATION R ON C.car_id=R.car_id))
+Select C.status from Car C 
 
 9.all reservations of specific customer including customer information, car model and plate id, and daily payments within specific period  //not sure
 
-SELECT CS.first_name, CS.last_name, CS.email,CS.birth_date, C.model, C.plate_number, R.payment FROM CUSTOMER CS JOIN RESERVATION R ON CS.customer_id=R.customer_id JOIN CAR C ON C.car_id=R.car_id  where CS./*condition*/ AND R.reserve_date >= /*first given date*/ AND R.rent_date <= /*second given date*/ AND U.is_admin="N"
+SELECT CS.first_name, CS.last_name, CS.email,CS.birth_date, C.model, C.plate_number, P.amount_paid,P.amount_remaining FROM CUSTOMER CS JOIN RESERVATION R ON CS.customer_id=R.customer_id JOIN CAR C ON C.car_id=R.car_id  Join Payment P on R.payment_id=P.payment_id where CS./*condition*/ AND R.reserve_date >= /*first given date*/ AND R.rent_date <= /*second given date*/ AND U.is_admin="N"
 
 //This is something I wanna add but didnt know how to bs el full payment el fel reservation i wanna calculate it as (return date - reservation date)*price_per_day

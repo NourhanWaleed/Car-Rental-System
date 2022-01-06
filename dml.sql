@@ -25,11 +25,18 @@ INSERT INTO Car (plate_number,model,brand,`year`,status,color,price_per_day,offi
 ('3468764','Maruti','Suzuki','2018','rented','silver',75,6,'N'),
 ('5326742','Z4','BMW','2021','active','white',700,1,'Y');
 
+INSERT INTO Payment VALUES 
+(1,'Cash',3100.0,0.0,3100.0),
+(2,'Card', 1850.0,0.0,1850.0),
+(3,'Card',2850.0,0.0,2850.0),
+(4,'Cash',1400.0,1400.0,2800.0);
+
 INSERT INTO Reservation VALUES
-(1,8,1,'2021-12-15','2022-1-15','Y',3100.0),
-(4,6,2,'2021-12-25','2022-2-1','Y',1850.0),
-(2,7,3,'2021-12-28','2022-2-5','Y',2850.0),
-(5,10,4,'2022-1-1','2022-1-5','N',2800.0);
+(1,8,1,'2021-12-15','2022-1-15',1),
+(4,6,2,'2021-12-25','2022-2-1',2),
+(2,7,3,'2021-12-28','2022-2-5',3),
+(5,10,4,'2022-1-1','2022-1-5',4);
 
 INSERT INTO Admin(first_name,last_name,gender,date_of_birth,email,password) VALUES
 ('Eren','Jaeger','M','2000-3-30','freedom@gmail.com','tatakaex1000');
+
