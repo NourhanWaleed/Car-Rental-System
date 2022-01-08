@@ -20,9 +20,9 @@ INSERT INTO Car (plate_number,model,brand,`year`,status,color,price_per_day,offi
 ('6284327','Azera','Hyundai','2018','active','silver',200,3,'N'),
 ('6342876','Azera','Hyundai','2016','out of service','red',200,3,'N'),
 ('3468762','Panda','Fiat','2012','out of service','green',50,4,'Y'),
-('3578343','Granta','Lada','2016','rented','blue',75,4,'Y'),
-('3477344','SUV','Kia','2020','rented','indigo',100,5,'Y'),
-('3468764','Maruti','Suzuki','2018','rented','silver',75,6,'N'),
+('3578343','Granta','Lada','2016','active','blue',75,4,'Y'),
+('3477344','SUV','Kia','2020','active','indigo',100,5,'Y'),
+('3468764','Maruti','Suzuki','2018','active','silver',75,6,'N'),
 ('5326742','Z4','BMW','2021','active','white',700,1,'Y');
 
 INSERT INTO Payment VALUES 
