@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'registration');
+$conn = mysqli_connect('localhost', 'root', '', 'car-rental-system');
 
 if (!$conn) {
     die("<script>alert('Connection to database failed.')</script>");
