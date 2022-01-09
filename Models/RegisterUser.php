@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     $gender = $_POST['gender'];
     $date_of_birth = $_POST['date_of_birth'];
     $email = $_POST['email'];
-    $password = md5($_POST['password']);
+    $password = $_POST['password'];
     $balance = $_POST['balance'];
 
     $sql = "SELECT * FROM Customer WHERE email='$email'";
