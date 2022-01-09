@@ -42,10 +42,10 @@ PRIMARY KEY(payment_id)
 CREATE TABLE Reservation(
 customer_id INT,
 car_id  INT,
-reservation_number INT UNIQUE NOT NULL,
+reservation_number INT UNIQUE NOT NULL AUTO_INCREMENT,
 reserve_date DATE NOT NULL,
 return_date  DATE NOT NULL,
-payment_id int not null,
+payment_id int,
 PRIMARY KEY (customer_id,car_id),
 FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
 FOREIGN KEY (car_id) REFERENCES Car(car_id),    
