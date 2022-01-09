@@ -17,9 +17,11 @@
           </section>
           <nav class="main-nav">
             <ul>
-                <li><a href="reserve_car.php">Reserve Car</a></li>
-              <li><a href="payment.php">Payment</a></li>
-              <li><a href="search.php">Search</a></li>
+                <li><a href="add_car.php">Add Car</a></li>
+              <li><a href="edit_car.php" >Edit Car</a></li>
+              <li><a href="view_reserve.php">Reservations</a></li>
+              <li><a href="search.php">Reports</a></li>
+              <li><a href="advanced_search.php">Advanced Search</a></li>
             </ul>
           </nav>
 </header>
