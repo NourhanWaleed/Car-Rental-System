@@ -111,38 +111,35 @@ if (isset($_POST['search'])) {
         $count = $count + 1;
     }
     
-    if ($is_reserved != NULL) {
-        $query[$count] = "is_reserved = '$is_reserved'";
+    if ($email != NULL) {
+        $query[$count] = "email = '$email'";
         $count = $count + 1;
     }
     
-    if ($is_reserved != NULL) {
-        $query[$count] = "is_reserved = '$is_reserved'";
+   
+    
+    if ($balance != NULL) {
+        $query[$count] = "balance = '$balance'";
         $count = $count + 1;
     }
     
-    if ($is_reserved != NULL) {
-        $query[$count] = "is_reserved = '$is_reserved'";
+    if ($reserve_id != NULL) {
+        $query[$count] = "reservation_id = '$reserve_id'";
         $count = $count + 1;
     }
     
-    if ($is_reserved != NULL) {
-        $query[$count] = "is_reserved = '$is_reserved'";
+    if ($reserve_date != NULL) {
+        $query[$count] = "reservation_date = '$reserve_date'";
         $count = $count + 1;
     }
     
-    if ($is_reserved != NULL) {
-        $query[$count] = "is_reserved = '$is_reserved'";
+    if ($return_date != NULL) {
+        $query[$count] = "return_date = '$return_date'";
         $count = $count + 1;
     }
     
-    if ($is_reserved != NULL) {
-        $query[$count] = "is_reserved = '$is_reserved'";
-        $count = $count + 1;
-    }
-    
-    if ($is_reserved != NULL) {
-        $query[$count] = "is_reserved = '$is_reserved'";
+    if ($payment_id != NULL) {
+        $query[$count] = "payment_id = '$payment_id'";
         $count = $count + 1;
     }
     
@@ -160,7 +157,6 @@ if (isset($_POST['search'])) {
 
 
     $result = mysqli_query($conn, $sql);
-    $_SESSION['search_res'] = $result;
 //    echo "<script>window.location.href = '../View/search_result.php';</script>";
 }
 ?>
