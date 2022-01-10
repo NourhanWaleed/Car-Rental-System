@@ -19,8 +19,7 @@
             <ul>
                 <li><a href="add_car.php">Add Car</a></li>
               <li><a href="edit_car.php" >Edit Car</a></li>
-              <li><a href="view_reserve.php">Reservations</a></li>
-              <li><a href="search.php">Reports</a></li>
+              <li><a href="report.php">Reports</a></li>
               <li><a href="advanced_search.php">Advanced Search</a></li>
             </ul>
           </nav>

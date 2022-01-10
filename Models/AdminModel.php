@@ -8,7 +8,7 @@ class AdminModel{
         }
 
         if (isset($_POST['status'])) {
-            $sql = "SELECT C.status FROM Car C";
+            $sql = "SELECT C.car_id, C.brand, C.model, C.is_reserved FROM Car C";
             $result = mysqli_query($conn, $sql);
             return $result;
         }
