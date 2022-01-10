@@ -17,12 +17,30 @@ if (isset($_POST['search'])) {
     $color = $_POST['color'];
     $price_per_day = $_POST['price_per_day'];
     $office_id = $_POST['office_id'];
+
+    $cust_id = $_POST["cust_id"];
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $date_of_birth = $_POST['date_of_birth'];
+    $email = $_POST['email'];
+    $balance = $_POST['balance'];
+
+    $reserve_id = $_POST['reservation_id'];
+    $reserve_date = $_POST['reservation_date'];
+    $return_date = $_POST['return_date'];
+    $payment_id = $_POST['payment_id'];
      
     if (array_key_exists("status", $_POST)) {
         $status = $_POST['status'];
 
     } else {
         $status = NULL;
+    }
+    if (array_key_exists("gender", $_POST)) {
+        $gender = $_POST['gender'];
+
+    } else {
+        $gender = NULL;
     }
 
     if (array_key_exists("is_reserved", $_POST)) {
@@ -72,11 +90,66 @@ if (isset($_POST['search'])) {
         $query[$count] = "is_reserved = '$is_reserved'";
         $count = $count + 1;
     }
+
+    if ($cust_id != NULL) {
+        $query[$count] = "customer_id = '$cust_id'";
+        $count = $count + 1;
+    }
+    
+    if ($first_name != NULL) {
+        $query[$count] = "first_name = '$first_name'";
+        $count = $count + 1;
+    }
+    
+    if ($last_name != NULL) {
+        $query[$count] = "last_name = '$last_name'";
+        $count = $count + 1;
+    }
+    
+    if ($date_of_birth != NULL) {
+        $query[$count] = "date_of_birth = '$date_of_birth'";
+        $count = $count + 1;
+    }
+    
+    if ($is_reserved != NULL) {
+        $query[$count] = "is_reserved = '$is_reserved'";
+        $count = $count + 1;
+    }
+    
+    if ($is_reserved != NULL) {
+        $query[$count] = "is_reserved = '$is_reserved'";
+        $count = $count + 1;
+    }
+    
+    if ($is_reserved != NULL) {
+        $query[$count] = "is_reserved = '$is_reserved'";
+        $count = $count + 1;
+    }
+    
+    if ($is_reserved != NULL) {
+        $query[$count] = "is_reserved = '$is_reserved'";
+        $count = $count + 1;
+    }
+    
+    if ($is_reserved != NULL) {
+        $query[$count] = "is_reserved = '$is_reserved'";
+        $count = $count + 1;
+    }
+    
+    if ($is_reserved != NULL) {
+        $query[$count] = "is_reserved = '$is_reserved'";
+        $count = $count + 1;
+    }
+    
+    if ($is_reserved != NULL) {
+        $query[$count] = "is_reserved = '$is_reserved'";
+        $count = $count + 1;
+    }
     
     if ($count == 0) {
-        $sql = "SELECT * FROM car";
+        $sql = "SELECT * FROM car NATURAL JOIN customer NATURAL JOIN reservation";
     } else {
-        $sql = "SELECT * FROM car
+        $sql = "SELECT * FROM car NATURAL JOIN customer NATURAL JOIN reservation
         WHERE " . $query[$i];
         $i = $i + 1;
         while ($i < $count) {
