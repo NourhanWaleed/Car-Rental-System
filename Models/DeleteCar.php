@@ -9,7 +9,7 @@ if (!$conn) {
 }
 
 $car_id = $_POST['car_id'];
-$sql = "DELETE from Car where car_id = ". $car_id;
+$sql = "DELETE from car where car_id = ". $car_id;
 $result = mysqli_query($conn, $sql);
 return $result;
 ?>

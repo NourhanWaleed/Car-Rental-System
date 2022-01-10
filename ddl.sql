@@ -48,7 +48,7 @@ return_date  DATE NOT NULL,
 payment_id int NOT NULL,
 PRIMARY KEY (customer_id,car_id),
 FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
-FOREIGN KEY (car_id) REFERENCES Car(car_id),    
+FOREIGN KEY (car_id) REFERENCES Car(car_id) ON DELETE CASCADE ON UPDATE CASCADE,    
 FOREIGN KEY (payment_id) REFERENCES Payment(payment_id)
 );
 
