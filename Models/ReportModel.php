@@ -5,21 +5,26 @@ if (!$conn) {
     die("<script>alert('Connection to database failed.')</script>");
 }
 
-$result = NULL;
+$result;
 
 if (isset($_POST['status'])) {
-    $sql = "SELECT C.car_id, C.brand, C.model, C.is_reserved FROM Car C";
+    $reserve_date = $_POST['reserve_date'];
+    $return_date = $_POST['return_date'];
+
+    $sql = "SELECT C.car_id, C.brand, C.model, C.is_reserved FROM Car C
+    JOIN reservation R
+    WHERE R.reserve_date > '$reserve_date' AND R.return_date < '$return_date'";
     $result = mysqli_query($conn, $sql);
 }
 else if(isset($_POST['report_1'])){
     $reserve_date = $_POST['reserve_date'];
     $return_date = $_POST['return_date'];
 
-    $sql = "SELECT * FROM CUSTOMER C
-    JOIN RESERVATION R ON U.user_id=R.user_id
+    $sql = "SELECT * FROM CUSTOMER U
+    JOIN RESERVATION R ON U.customer_id=R.customer_id
     JOIN CAR C ON R.car_id=C.car_id
     JOIN Payment P ON R.payment_id=P.payment_id
-    WHERE R.reserve_date < '$reserve_date' AND R.return_date > '$return_date'";
+    WHERE R.reserve_date > '$reserve_date' AND R.return_date < '$return_date'";
     $result = mysqli_query($conn, $sql);
 }
 else if(isset($_POST['report_2'])){
@@ -28,7 +33,7 @@ else if(isset($_POST['report_2'])){
 
     $sql = "SELECT * FROM RESERVATION R
     JOIN CAR C ON R.car_id=C.car_id
-    WHERE R.reserve_date < '$reserve_date' AND R.return_date > '$return_date'";
+    WHERE R.reserve_date > '$reserve_date' AND R.return_date < '$return_date'";
     $result = mysqli_query($conn, $sql);
 }
 else if(isset($_POST['report_3'])){
