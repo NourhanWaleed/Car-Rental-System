@@ -28,6 +28,14 @@
 
     $sql = "UPDATE payment SET amount_paid = ".$amount_paid.", amount_remaining = ".$amount_remaining." WHERE payment_id = ".$payment_id;
     mysqli_query($conn, $sql);
+
+    $sql = "SELECT customer_id, balance FROM customer WHERE customer_id in 
+    (SELECT customer_id FROM reservation JOIN payment on reservation.payment_id = payment.payment_id 
+    WHERE payment_id = $payment_id)";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $customer_id = $row['customer_id'];
+    $sql = "UPDATE customer SET balance = balance - ".$amount_paid." WHERE customer_id = $customer_id";
     mysqli_close($conn);
 
 ?>
