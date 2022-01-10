@@ -71,7 +71,7 @@ include "admin_header.php";
 <td><?php echo $array['payment_type'];?></td>
 <td><?php echo $array['amount_paid'];?></td>
 <td><?php echo $array['amount_remaining'];?></td>
-<td><?php echo $array['total amount'];?></td>
+<td><?php echo $array['total_amount'];?></td>
 
 <td> 
 </tr>

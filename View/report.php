@@ -2,10 +2,12 @@
 include "admin_header.php";
 ?>
 <html>
-<h2>Enter reservation and return dates (form: YYYY/MM/DD)</h2>
+<h2>Reports and Car Status</h2>
     <div class="col-sm-6 col-sm-offset-3 form-box">
 
         <form name="report" action="status_result.php" method="POST">
+
+            <h5>Enter reservation date and return date (form: YYYY-MM-DD)</h5>
 
             <div class="form-group">
                 <label>Reservation Date</label>
@@ -27,6 +29,8 @@ include "admin_header.php";
 
         <form name="report" action="report_1_result.php" method="POST">
 
+            <h5>Enter reservation date and return date (form: YYYY-MM-DD)</h5>
+
             <div class="form-group">
                 <label>Reservation Date</label>
                 <input type="text" class="form-control" name="reserve_date" />
@@ -47,6 +51,8 @@ include "admin_header.php";
 
         <form name="report" action="report_2_result.php" method="POST">
 
+            <h5>Enter reservation date and return date (form: YYYY-MM-DD)</h5>
+
             <div class="form-group">
                 <label>Reservation Date</label>
                 <input type="text" class="form-control" name="reserve_date" />
@@ -66,6 +72,13 @@ include "admin_header.php";
     <div class="col-sm-6 col-sm-offset-3 form-box">
 
         <form name="report" action="report_3_result.php" method="POST">
+
+            <h5>Enter customer ID and reservation date and return date (form: YYYY-MM-DD)</h5>
+
+            <div class="form-group">
+                <label>Customer ID</label>
+                <input type="text" class="form-control" name="customer_id" />
+            </div>
 
             <div class="form-group">
                 <label>Reservation Date</label>

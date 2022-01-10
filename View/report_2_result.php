@@ -14,10 +14,20 @@ include "admin_header.php";
 <table class="table">
 <thead>
 <tr>
-<th scope="col">#</th>
+<th scope="col">Car ID</th>
+<th scope="col">Plate Number</th>
 <th scope="col">Model</th>
 <th scope="col">Brand</th>
-<th scope="col">Is reserved</th>
+<th scope="col">Year</th>
+<th scope="col">Status</th>
+<th scope="col">Color</th>
+<th scope="col">Price per day</th>
+<th scope="col">Office ID</th>
+<th scope="col">Is Reserved</th>
+<th scope="col">Reservation Number</th>
+<th scope="col">Reservation Date</th>
+<th scope="col">Return Date</th>
+<th scope="col">Payment ID</th>
 
 </tr>
 </thead>
@@ -27,9 +37,19 @@ include "admin_header.php";
 <?php while($array=mysqli_fetch_assoc($result)): ?>
 <tr>
 <th scope="row"><?php echo $array['car_id'];?></th>
+<td><?php echo $array['plate_number'];?></td>
 <td><?php echo $array['model'];?></td>
 <td><?php echo $array['brand'];?></td>
+<td><?php echo $array['year'];?></td>
+<td><?php echo $array['status'];?></td>
+<td><?php echo $array['color'];?></td>
+<td><?php echo $array['price_per_day'];?></td>
+<td><?php echo $array['office_id'];?></td>
 <td><?php echo $array['is_reserved'];?></td>
+<td><?php echo $array['reservation_number'];?></td>
+<td><?php echo $array['reserve_date'];?></td>
+<td><?php echo $array['return_date'];?></td>
+<td><?php echo $array['payment_id'];?></td>
 
 <td> 
 </tr>
