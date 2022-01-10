@@ -1,7 +1,7 @@
 <?php 
-include "..\Models\ReportModel.php";
 session_start();
 $result = $_SESSION['report_res']; 
+include "..\Models\ReportModel.php";
 include "admin_header.php";
 ?>
 
