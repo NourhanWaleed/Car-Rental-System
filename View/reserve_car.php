@@ -92,6 +92,7 @@ if (reserve_date == "" || return_date == "") {
     function(returnedData){
         alert("Reservation success!");
         window.location.reload();
+        console.log(returnedData);
 });
 }
 

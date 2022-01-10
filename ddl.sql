@@ -32,7 +32,7 @@ PRIMARY KEY (car_id),
 FOREIGN KEY (office_id) REFERENCES Office(office_id)    
 );
 CREATE TABLE Payment(
-payment_id INT NOT NULL,
+payment_id INT NOT NULL AUTO_INCREMENT,
 payment_type VARCHAR(255) NOT NULL,
 amount_paid float NOT NULL,
 amount_remaining float NOT NULL,
@@ -45,7 +45,7 @@ car_id  INT,
 reservation_number INT UNIQUE NOT NULL AUTO_INCREMENT,
 reserve_date DATE NOT NULL,
 return_date  DATE NOT NULL,
-payment_id int NOT NULL AUTO_INCREMENT,
+payment_id int NOT NULL,
 PRIMARY KEY (customer_id,car_id),
 FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
 FOREIGN KEY (car_id) REFERENCES Car(car_id),    

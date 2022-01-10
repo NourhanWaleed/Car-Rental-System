@@ -16,7 +16,7 @@
     $return_date = $_POST['return_date'];
 
     $query="SELECT price_per_day FROM car WHERE car_id = ". $car_id; 
-    $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($result);
         $datetime1 = date_create($reserve_date);
         $datetime2 = date_create($return_date);
@@ -27,21 +27,25 @@
     $interval = date_diff($datetime1, $datetime2);
 
     // Printing result in years & months format
-    $price = $price_per_day * $interval->d;
+    $price = $price_per_day * ($interval->d + 1);
+    echo $price;
 
-    $sql = "INSERT INTO reservation(customer_id, car_id, reserve_date, return_date) VALUES (".$customer_id.",".$car_id.",'".$reserve_date."','".$return_date."')";
+    $payment_id = rand();
+
+    $sql = "INSERT INTO payment(payment_id, payment_type, amount_paid, amount_remaining, total_amount) VALUES (".$payment_id.",'Credit', 0, ".$price.", ".$price.")";
     mysqli_query($conn, $sql);
 
-    $sql = "SELECT payment_id FROM reservation WHERE customer_id=".$customer_id." AND car_id =" .$car_id;
-    $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_assoc($result);
-        $payment_id = $row["payment_id"]; 
-    
 
 
 
-    $sql = "INSERT INTO payment(payment_id, payment_type, amount_paid, amount_remaining, total_amount) VALUES (".$payment_id.", 'Credit', 0, ".$price.", ".$price.")";
+    $sql = "INSERT INTO reservation(customer_id, car_id, reserve_date, return_date, payment_id) VALUES (".$customer_id.",".$car_id.",".date_format($datetime1,"Y/m/d").",".date_format($datetime2,"Y/m/d").",".$payment_id.")";
     mysqli_query($conn, $sql);
+
+ 
+
+
+
+
 
     $sql = "UPDATE car SET is_reserved = 'Y' WHERE car.car_id = " . $car_id;
     mysqli_query($conn, $sql);

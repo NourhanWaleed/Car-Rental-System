@@ -13,8 +13,6 @@ include "header.php";
 <thead>
 <tr>
 <th scope="col">#</th>
-<th scope="col">Reservation Date</th>
-<th scope="col">Return Date</th>
 <th scope="col">Amount Paid</th>
 <th scope="col">Amount Remaining</th>
 <th scope="col">Total</th>
@@ -37,14 +35,12 @@ $result=mysqli_query($conn,$query);
 <?php while($array=mysqli_fetch_assoc($result)): ?>
 <tr>
 <th scope="row"><?php echo $array['reservation_number'];?></th>
-<td><?php echo $array['reserve_date'];?></td>
-<td><?php echo $array['return_date'];?></td>
 <td><?php echo $array['amount_paid'];?></td>
 <td><?php echo $array['amount_remaining'];?></td>
 <td><?php echo $array['total_amount'];?></td>
 
 <td> 
-<a class="btn btn-primary pay" data-id=<?php echo $array['reservation_number'];?>>Pay</a>
+<a class="btn btn-primary pay" data-id=<?php echo $array['payment_id'];?>>Pay</a>
 </tr>
 <?php endwhile; ?>
 <?php else: ?>
@@ -56,7 +52,7 @@ $result=mysqli_query($conn,$query);
 </tbody>
 </table>
 <?php 
-$query="SELECT balance FROM customer WHERE customer_id=".$customer_id." "; 
+$query="SELECT balance FROM customer WHERE customer_id=".$customer_id; 
 $result=mysqli_query($conn,$query);
 if ($result->num_rows > 0){
     while($array=mysqli_fetch_assoc($result)){
@@ -66,7 +62,7 @@ if ($result->num_rows > 0){
 mysqli_close($conn);
 ?>
 <div id="confirmation" class="col-md-4">
-    <p>Your balance: <?php $balance ?></p>
+    <p>Your balance: <span id = "balance"><?php echo $balance ?></span></p>
     <form name="confirmForm">
     <div class="form-group">
     <label for="amount_paid">Pay amount</label>
@@ -78,19 +74,21 @@ mysqli_close($conn);
 <script type="text/javascript">
 
 $(document).ready(function($){
-$('body').on('click', '.reserve', function () {
-var reserve_date = document.forms["confirmForm"]["reserve-date"].value;
-var return_date = document.forms["confirmForm"]["return-date"].value;
-var carid = $(this).data('id');
-if (reserve_date == "" || return_date == "") {
-    alert("Please enter reservation period!");
-
-} else if (new Date(reserve_date) > new Date(return_date)) {
-    alert("Return date cannot be before reserve date");
+$('body').on('click', '.pay', function () {
+var amount_paid = document.forms["confirmForm"]["amount_paid"].value;
+var balance = document.getElementById('balance').innerHTML;
+var payment_id = $(this).data('id');
+if (amount_paid == "") {
+    alert("Please enter amount to be paid!");
+} else if (balance < parseFloat(amount_paid)) {
+    alert("Payment exceeds balance!");
 } else {
-    $.post('../Models/ReserveCar.php', {car_id: carid, reserve_date: reserve_date, return_date: return_date}, 
+    amount_paid =  parseFloat(amount_paid);
+    $.post('../Models/ConfirmPayment.php', {payment_id: payment_id, amount_paid: amount_paid}, 
     function(returnedData){
-        alert("Reservation success!");
+        alert("Payment Success!");
+        window.location.reload();
+        console.log(returnedData);
 });
 }
 
