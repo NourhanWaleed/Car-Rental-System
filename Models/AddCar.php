@@ -18,8 +18,10 @@ if (isset($_POST['add-car'])) {
     $office_id = $_POST['office_id'];
      
 
-    $SQL = "INSERT INTO Car (plate_number,model,brand,`year`,color,price_per_day,office_id, status, is_reserved) VALUES 
-    (".$plate_number.",".$model.",".$brand.",".$year.",".$color.",".$price_per_day.",".$office_id.", 'active', 'N')";
+    $sql = "INSERT INTO Car (plate_number,model,brand,`year`,color,price_per_day,office_id, status, is_reserved) VALUES 
+    (".$plate_number.",'".$model."','".$brand."',".$year.",'".$color."',".$price_per_day.",".$office_id.", 'active', 'N')";
+
+//echo $sql;
 
 
     $result = mysqli_query($conn, $sql);
